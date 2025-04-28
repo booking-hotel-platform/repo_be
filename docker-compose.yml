@@ -40,7 +40,7 @@ services:
 
   client:
     build:
-      context: ../../front-end/client  # Đường dẫn tới thư mục client trong front-end
+      context: ../repo-fe  # Đường dẫn tới thư mục client trong front-end
       dockerfile: Dockerfile
       args:
         - REACT_APP_API_URL=http://localhost:8080/api
