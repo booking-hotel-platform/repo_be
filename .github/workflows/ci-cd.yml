@@ -41,3 +41,6 @@ jobs:
           docker tag api-app thinhnd24/spring-app
           docker push thinhnd24/spring-app
         
+      - name: Trigger deploy on Render
+        run: |
+          curl -X POST https://api.render.com/deploy/srv-d045p0adbo4c73e9iv9g?key=xtiRl3rX5lo
