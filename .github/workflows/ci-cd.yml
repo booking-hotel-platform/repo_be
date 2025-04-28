@@ -27,6 +27,8 @@ jobs:
           docker-compose up --build -d 
       - name: Tag and push Docker image
         run: |
+          docker build -t api-app .
+          docker images
           docker tag api-app thinhnd24/spring-app
           docker push thinhnd24/spring-app
         
