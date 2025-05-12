@@ -1,5 +1,8 @@
 package com.booking_hotel.api.hotel.controller;
 
+import com.booking_hotel.api.auth.config.jwt.JwtProvider;
+import com.booking_hotel.api.auth.entity.User;
+import com.booking_hotel.api.auth.repository.UserRepository;
 import com.booking_hotel.api.exception.ElementNotFoundException;
 import com.booking_hotel.api.hotel.dto.CountByCityResponse;
 import com.booking_hotel.api.hotel.dto.HotelResponse;
@@ -19,6 +22,7 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -29,6 +33,7 @@ import java.util.Optional;
 public class HotelController {
 
     private final HotelService hotelService;
+    private final UserRepository userRepository;
 
     @PostMapping("/createHotel")
     public ResponseEntity<HotelResponse> createHotel(@RequestBody Hotel hotel, @CookieValue("access_token") String accessToken) {
@@ -51,6 +56,17 @@ public class HotelController {
     @GetMapping("/limit")
     public ResponseEntity<List<HotelResponse>> getAllHotelsLimit(@RequestParam int limit) {
         return hotelService.getAllHotelsLimit(limit);
+    }
+
+    @GetMapping("/findAllHotelsByOwner")
+    public ResponseEntity<List<HotelResponse>> getAllHotelsByOwner(@CookieValue("access_token") String accessToken) {
+        String username = JwtProvider.getUserNameByToken(accessToken);
+        User user = userRepository.findUserByUsername(username);
+        if(user == null) {
+            throw new ElementNotFoundException("User not found");
+        }
+        List<HotelResponse> hotelsByOwner = hotelService.getHotelsByOwner(user);
+        return ResponseEntity.ok(hotelsByOwner);
     }
 
     @GetMapping("/countByCity")

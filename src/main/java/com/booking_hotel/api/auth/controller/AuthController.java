@@ -34,6 +34,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.Duration;
 import java.time.ZonedDateTime;
@@ -314,6 +315,5 @@ public class AuthController {
         userRepository.save(user);
         return ResponseEntity.noContent().build();
     }
-
 
 }

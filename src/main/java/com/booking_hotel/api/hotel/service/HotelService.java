@@ -1,5 +1,6 @@
 package com.booking_hotel.api.hotel.service;
 
+import com.booking_hotel.api.auth.entity.User;
 import com.booking_hotel.api.hotel.dto.CountByCityResponse;
 import com.booking_hotel.api.hotel.dto.HotelResponse;
 import com.booking_hotel.api.hotel.entity.Hotel;
@@ -25,5 +26,6 @@ public interface HotelService {
     List<HotelResponse> convertToHotelResponseList(List<Hotel> hotels);
     ResponseEntity<CountByCityResponse> countByCity();
     List<HotelResponse> searchHotelsWithSpecification(Specification<Hotel> specification);
+    List<HotelResponse> getHotelsByOwner(User owner);
 //    List<Hotel> getHotelsHasRoomAvailable(String city, ZonedDateTime checkInDate, ZonedDateTime checkOutDate);
 }

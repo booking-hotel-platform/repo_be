@@ -140,4 +140,10 @@ public class HotelServiceImpl implements HotelService {
         }
         return new ResponseEntity<>(hotelResponseList, HttpStatus.CREATED);
     }
+
+    @Override
+    public List<HotelResponse> getHotelsByOwner(User owner) {
+        List<Hotel> hotelsByOwner = hotelRepository.findAllByOwner(owner);
+        return HotelResponseUtils.convertToHotelResponseList(hotelsByOwner);
+    }
 }
