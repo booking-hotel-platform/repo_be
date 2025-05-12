@@ -52,6 +52,7 @@ public class BookingController {
     public ResponseEntity<BookingResponse> createBooking(@RequestBody Booking booking
                                                         , @CookieValue("access_token") String accessToken
                                                         , @RequestParam Long roomId) {
+        System.out.println("accessToken : " + accessToken);
         return new ResponseEntity<>(bookingService.createBooking(booking, accessToken, roomId), HttpStatus.CREATED);
     }
 
