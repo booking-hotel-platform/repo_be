@@ -188,10 +188,10 @@ public class AuthController {
         // Tạo cookie
         ResponseCookie accessCookie = ResponseCookie.from("access_token", jwt)
                 .httpOnly(false)
-                .secure(false)
+                .secure(true)
                 .path("/")
                 .maxAge(Duration.ofDays(7))
-                .sameSite("Strict")
+                .sameSite("None")
                 .build();
 
         ResponseCookie refreshCookie = ResponseCookie.from("refresh_token", refreshToken)
@@ -199,7 +199,7 @@ public class AuthController {
                 .secure(true)
                 .path("/auth/refresh")
                 .maxAge(Duration.ofDays(7))
-                .sameSite("Strict")
+                .sameSite("None")
                 .build();
 
         response.addHeader(HttpHeaders.SET_COOKIE, accessCookie.toString());
