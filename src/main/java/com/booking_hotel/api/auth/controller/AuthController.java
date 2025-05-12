@@ -188,7 +188,7 @@ public class AuthController {
         // Tạo cookie
         ResponseCookie accessCookie = ResponseCookie.from("access_token", jwt)
                 .httpOnly(false)
-                .secure(true)
+                .secure(false)
                 .path("/")
                 .maxAge(Duration.ofDays(7))
                 .sameSite("Strict")
