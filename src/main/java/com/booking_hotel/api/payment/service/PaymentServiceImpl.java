@@ -88,8 +88,8 @@ public class PaymentServiceImpl implements PaymentService {
                 SessionCreateParams.builder()
                         .putMetadata("bookingId", bookingId.toString())
                         .setMode(SessionCreateParams.Mode.PAYMENT)
-                        .setSuccessUrl("https://starlit-fudge-cef549.netlify.app//checkout/success?bookingId=" + bookingId)
-                        .setCancelUrl("https://starlit-fudge-cef549.netlify.app//checkout/cancel?bookingId=" + bookingId)
+                        .setSuccessUrl("https://starlit-fudge-cef549.netlify.app/checkout/success?bookingId=" + bookingId)
+                        .setCancelUrl("https://starlit-fudge-cef549.netlify.app/checkout/cancel?bookingId=" + bookingId)
                         .addLineItem(lineItem)
                         .build();
 
