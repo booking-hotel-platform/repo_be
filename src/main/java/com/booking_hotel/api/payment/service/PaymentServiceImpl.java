@@ -48,6 +48,9 @@ public class PaymentServiceImpl implements PaymentService {
     @Value("${stripe.webhook.secret}")
     private String webhookSecret;
 
+    @Value("${frontend.url}")
+    private String frontendUrl;
+
     @Override
     public StripeResponse checkoutBooking(Long bookingId, String token) {
         Stripe.apiKey = secretKey;
@@ -85,8 +88,8 @@ public class PaymentServiceImpl implements PaymentService {
                 SessionCreateParams.builder()
                         .putMetadata("bookingId", bookingId.toString())
                         .setMode(SessionCreateParams.Mode.PAYMENT)
-                        .setSuccessUrl("http://localhost:3000/checkout/success?bookingId=" + bookingId)
-                        .setCancelUrl("http://localhost:3000/checkout/cancel?bookingId=" + bookingId)
+                        .setSuccessUrl(frontendUrl+"/checkout/success?bookingId=" + bookingId)
+                        .setCancelUrl(frontendUrl+"/checkout/cancel?bookingId=" + bookingId)
                         .addLineItem(lineItem)
                         .build();
 
