@@ -44,19 +44,3 @@ jobs:
         run: |
           curl -X POST https://api.render.com/deploy/srv-d045p0adbo4c73e9iv9g?key=xtiRl3rX5lo
 
-      - name: Checkout gh-pages branch
-        run: |
-          git clone --branch gh-pages https://github.com/<username>/<repository>.git gh-pages
-
-      - name: Copy index.html to gh-pages
-        run: |
-          cp target/site/jacoco/index.html gh-pages/
-
-      - name: Commit and push to gh-pages
-        run: |
-          cd gh-pages
-          git config --local user.email "you@example.com"
-          git config --local user.name "Your Name"
-          git add index.html
-          git commit -m "Deploy index.html to GitHub Pages"
-          git push origin gh-pages

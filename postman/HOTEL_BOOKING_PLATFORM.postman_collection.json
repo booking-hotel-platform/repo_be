@@ -1,0 +1,1868 @@
+{
+	"info": {
+		"_postman_id": "0c2352b4-0ea9-44a8-af41-fb53d08ad295",
+		"name": "HOTEL_BOOKING_PLATFORM",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35056746"
+	},
+	"item": [
+		{
+			"name": "bookings",
+			"item": [
+				{
+					"name": "CREATE BOOKING",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"checkInDate\": \"2023-05-01T14:00:00+07:00\",\r\n    \"checkOutDate\": \"2023-05-02T11:00:00+07:00\",\r\n    \"totalPrice\": 500.0\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/bookings?roomId=7",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookings"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3NDE4NDgzMjMsImV4cCI6MTc0MTkyOTIyNCwidXNlcm5hbWUiOiJUaGluaDI0OCIsImF1dGhvcml0aWVzIjoiW1wiUk9MRV9VU0VSXCIsXCJST0xFX09XTkVSXCJdIn0.-UncyA7fpr-bF-V2KatYSrT2BljblDb6TnnIgR9ZI7_CRptRrfYFEg6MZA3hsFHj6aUPZVi20WQWkBaLr4Qebw",
+									"disabled": true
+								},
+								{
+									"key": "roomId",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE BOOKING",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"checkInDate\": \"2023-05-02T14:00:00+07:00\",\r\n    \"checkOutDate\": \"2023-05-05T11:00:00+07:00\",\r\n    \"totalPrice\": 450.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/bookings/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookings",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SEARCH BOOKING",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/bookings/search?roomId=7",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookings",
+								"search"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "roomId",
+									"value": "7"
+								},
+								{
+									"key": "checkInDate",
+									"value": "2023-05-04T07:00:00Z",
+									"disabled": true
+								},
+								{
+									"key": "checkOutDate",
+									"value": "2023-05-06T07:00:00Z",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "PENDING",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": "totalPrice",
+									"disabled": true
+								},
+								{
+									"key": "sortDirection",
+									"value": "Asc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE BOOKING",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/bookings/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookings",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL BOOKINGS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/bookings",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BOOKING BY ID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const Host = pm.globals.get(\"Host\")\r",
+									"const postRequest = {\r",
+									"  url: `localhost:8080/api/auth/signin`,\r",
+									"  method: 'POST',\r",
+									"  header: {\r",
+									"    'Content-Type': 'application/json',\r",
+									"    'X-Foo': 'bar'\r",
+									"  },\r",
+									"  body: {\r",
+									"    mode: 'raw',\r",
+									"    raw: JSON.stringify({\"username\" : \"Thinh248\", \"password\" : \"Thinh248@\"})\r",
+									"  }\r",
+									"};\r",
+									"pm.sendRequest(postRequest, (error, response) => {\r",
+									"   console.log(error ? error : response.json());\r",
+									"   const res = response.json(); \r",
+									"   pm.globals.set(\"accessToken\", res.accessToken);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const res = pm.response.json(); \r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/bookings/18",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookings",
+								"18"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SEND DAILY BOOKING",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/bookings/daily-booking",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookings",
+								"daily-booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BOOKINGS BY USER",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/bookings/booking-by-userId/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookings",
+								"booking-by-userId",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BOOKINGS BY USER ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/bookings/booking-by-userId/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookings",
+								"booking-by-userId",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auths",
+			"item": [
+				{
+					"name": "GET ALL USERS",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "LOG IN",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Parse JSON response từ API\r",
+									"const res = pm.response.json();\r",
+									"\r",
+									"// Kiểm tra nếu API trả về accessToken hợp lệ\r",
+									"if (res.accessToken) {\r",
+									"    pm.globals.set(\"accessToken\", res.accessToken); // Lưu accessToken vào biến toàn cục\r",
+									"}\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"thinh248\",\n    \"password\": \"Thinh248@\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/auth/signin",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "SIGN UP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"thinh248\",\r\n  \"email\": \"thinhnguyenndt248@gmail.com\",\r\n  \"password\": \"Thinh248@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/auth/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FORGOT PASSWORD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/auth/forgotPassword?email=thinhnguyenndt248@gmail.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"forgotPassword"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "thinhnguyenndt248@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RESET PASSWORD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"50a915c3-309c-4c27-8afb-2066fa261279\",\r\n    \"newPassword\": \"Thinh248@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/resetPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"resetPassword"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "49cd9230-8498-47e5-80f0-552107d87d45",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SIGN UP BECOME OWNER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/auth/signupBecomeOwner",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"signupBecomeOwner"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3NDE5Mzc3ODEsImV4cCI6MTc0MjAxODY4MiwidXNlcm5hbWUiOiJUaGluaDI0OCIsImF1dGhvcml0aWVzIjoiW1wiUk9MRV9VU0VSXCJdIn0.-2h8_HE4BxtL5i7Vhkwq-0nvWS7insOCt98skFUYVhFsPzRZ4Sf-UlFHJ0QklwmexgmFSCje6xTiHhu1HzfzIA",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "APPROVE OWNER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/auth/approveOwner?userId=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"approveOwner"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REFRESH TOKEN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n53d2220c-c1c3-4042-a0d2-806e752440b5\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/auth/refresh-token?refreshToken=dff467e1-a4fb-4a76-86f0-7c8ee4f16e54",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"refresh-token"
+							],
+							"query": [
+								{
+									"key": "refreshToken",
+									"value": "dff467e1-a4fb-4a76-86f0-7c8ee4f16e54"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BAN USER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/auth/banUser?userId=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"banUser"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET USER BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/users/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "hotels",
+			"item": [
+				{
+					"name": "CREATE HOTEL",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"name\": \"Muong Thanh\",\r\n        \"address\": \"99 Vo Nguyen Giap\",\r\n        \"city\": \"Nha Trang\",\r\n        \"country\": \"Viet Nam\",\r\n        \"description\": \"Modern and stylish hotel with top-class service\",\r\n        \"rooms\":[]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/hotels/createHotel",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"hotels",
+								"createHotel"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3NDE5MzY0ODUsImV4cCI6MTc0MjAxNzM4NiwidXNlcm5hbWUiOiJUaGluaDEyMyIsImF1dGhvcml0aWVzIjoiW1wiUk9MRV9VU0VSXCJdIn0.F_8QZUrktnexQ9oTk0SxwAginj5pOeih8UGm_Hm_D7wFHN6o4bgKLXb0bfY3hjD7f9QpDTYOOTlUCcjoB-1-EQ",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE HOTEL",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"name\": \"Sunshine Resort\",\r\n        \"address\": \"99 Vo Nguyen Giap11\",\r\n        \"city\": \"Nha Trang\",\r\n        \"country\": \"Viet Nam\",\r\n        \"description\": \"Modern and stylish hotel with top-class service\",\r\n        \"price\": 160\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/hotels/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"hotels",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL HOTELS",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const res = pm.response.json(); \r",
+									"\r",
+									"console.log('accessToken', pm.globals.get('accessToken'));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accessToken",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/api/hotels",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"hotels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SEARCH HOTELS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/hotels/search",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"hotels",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Pullman",
+									"disabled": true
+								},
+								{
+									"key": "country",
+									"value": "Viet Nam",
+									"disabled": true
+								},
+								{
+									"key": "minPrice",
+									"value": "3000000",
+									"disabled": true
+								},
+								{
+									"key": "maxPrice",
+									"value": "5000000",
+									"disabled": true
+								},
+								{
+									"key": "checkInDate",
+									"value": "2025-04-01T14:00:00%2B07:00",
+									"disabled": true
+								},
+								{
+									"key": "checkOutDate",
+									"value": "2025-04-03T14:00:00%2B07:00",
+									"disabled": true
+								},
+								{
+									"key": "city",
+									"value": "Da Nang",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET HOTELS HAVE LIMIT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/hotels/limit?limit=4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"hotels",
+								"limit"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "COUNT BY CITY",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/hotels/countByCity",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"hotels",
+								"countByCity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE HOTELS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"name\": \"Ocean\",\r\n        \"address\": \"145 Vo Nguyen Giap\",\r\n        \"city\": \"Da Nang\",\r\n        \"country\": \"Viet Nam\",\r\n        \"description\": \"Modern and stylish hotel with top-class service\"\r\n    },\r\n    {\r\n        \"name\": \"Premium\",\r\n        \"address\": \"980 Nguyen Phan Vinh\",\r\n        \"city\": \"Ha Noi\",\r\n        \"country\": \"Viet Nam\",\r\n        \"description\": \"Modern and stylish hotel with top-class service\"\r\n    },\r\n    {\r\n        \"name\": \"TIA\",\r\n        \"address\": \"158 Phan Tu\",\r\n        \"city\": \"Ho Chi Minh\",\r\n        \"country\": \"Viet Nam\",\r\n        \"description\": \"Modern and stylish hotel with top-class service\"\r\n    },\r\n    {\r\n        \"name\": \"Fire Four\",\r\n        \"address\": \"912 Nguyen Tat Thanh\",\r\n        \"city\": \"Da Nang\",\r\n        \"country\": \"Viet Nam\",\r\n        \"description\": \"Modern and stylish hotel with top-class service\",\r\n        \"cheapestPrice\": 100\r\n    },\r\n    {\r\n        \"name\": \"Sunset Beach Resort\",\r\n        \"address\": \"123 Tran Phu\",\r\n        \"city\": \"Ha Noi\",\r\n        \"country\": \"Viet Nam\",\r\n        \"description\": \"Khu nghỉ dưỡng bên bờ biển với dịch vụ tuyệt vời.\"\r\n    },\r\n    {\r\n        \"name\": \"Royal Palace Hotel\",\r\n        \"address\": \"456 Le Duan\",\r\n        \"city\": \"Da Nang\",\r\n        \"country\": \"Viet Nam\",\r\n        \"description\": \"Khách sạn sang trọng với tiện nghi hiện đại.\"\r\n    },\r\n    {\r\n        \"name\": \"Green Valley Hotel\",\r\n        \"address\": \"789 Nguyen Hue\",\r\n        \"city\": \"Ha Noi\",\r\n        \"country\": \"Viet Nam\",\r\n        \"description\": \"Khách sạn yên tĩnh giữa thiên nhiên tươi đẹp.\"\r\n    },\r\n    {\r\n        \"name\": \"Skyline Hotel\",\r\n        \"address\": \"234 Tran Hung Dao\",\r\n        \"city\": \"Ha Noi\",\r\n        \"country\": \"Viet Nam\",\r\n        \"description\": \"Khách sạn hiện đại với tầm nhìn toàn cảnh thành phố.\"\r\n    },\r\n    {\r\n        \"name\": \"Golden Sands Resort\",\r\n        \"address\": \"321 Hoang Sa\",\r\n        \"city\": \"Da Nang\",\r\n        \"country\": \"Viet Nam\",\r\n        \"description\": \"Khu nghỉ dưỡng sang trọng bên bờ biển.\"\r\n    },\r\n    {\r\n        \"name\": \"Lakeside Hotel\",\r\n        \"address\": \"654 Ho Tung Mau\",\r\n        \"city\": \"Ha Noi\",\r\n        \"country\": \"Viet Nam\",\r\n        \"description\": \"Khách sạn bên hồ với không gian thư giãn.\"\r\n    },\r\n    {\r\n        \"name\": \"Luxury Inn\",\r\n        \"address\": \"987 Nguyen Trai\",\r\n        \"city\": \"Ha Noi\",\r\n        \"country\": \"Viet Nam\",\r\n        \"description\": \"Khách sạn cao cấp với dịch vụ tận tâm.\"\r\n    },\r\n    {\r\n        \"name\": \"Coconut Grove Hotel\",\r\n        \"address\": \"159 Nguyen Thi Minh Khai\",\r\n        \"city\": \"Da Nang\",\r\n        \"country\": \"Viet Nam\",\r\n        \"description\": \"Khách sạn gần biển với không gian xanh mát.\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/hotels/createHotels",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"hotels",
+								"createHotels"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3NDE4NDgzMjMsImV4cCI6MTc0MTkyOTIyNCwidXNlcm5hbWUiOiJUaGluaDI0OCIsImF1dGhvcml0aWVzIjoiW1wiUk9MRV9VU0VSXCIsXCJST0xFX09XTkVSXCJdIn0.-UncyA7fpr-bF-V2KatYSrT2BljblDb6TnnIgR9ZI7_CRptRrfYFEg6MZA3hsFHj6aUPZVi20WQWkBaLr4Qebw",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET HOTEL BY OWNER",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/hotels/hello",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"hotels",
+								"hello"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET HOTEL BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/hotels/8",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"hotels",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "reviews",
+			"item": [
+				{
+					"name": "CREATE REVIEW",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rating\": 4,\r\n    \"comment\": \"Hotel's very beautiful, service staff's friendly but price is a bit high !\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/reviews?hotelId=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "hotelId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL REVIEWS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/reviews",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE REVIEW",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rating\": 4,\r\n    \"comment\": \"Khách sạn đẹp, nhưng giá hơi cao.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/reviews?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE REVIEW",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/reviews?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET REVIEW BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/reviews?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET REVIEWS BY HOTEL",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/reviews/hotelDetails?hotelId=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reviews",
+								"hotelDetails"
+							],
+							"query": [
+								{
+									"key": "hotelId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET REVIEWS BY USER",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/reviews/userDetails",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reviews",
+								"userDetails"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "payments",
+			"item": [
+				{
+					"name": "GET PAYMENT BY ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/payments?paymentId=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"payments"
+							],
+							"query": [
+								{
+									"key": "paymentId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CHECKOUT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/payments/checkout?bookingId=22",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"payments",
+								"checkout"
+							],
+							"query": [
+								{
+									"key": "bookingId",
+									"value": "22"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE PAYMENT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"paymentMethod\": \"credit card\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/payments?bookingId=4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"payments"
+							],
+							"query": [
+								{
+									"key": "bookingId",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CHECKOUT SUCCESS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/payments/checkout/success?paymentId=3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"payments",
+								"checkout",
+								"success"
+							],
+							"query": [
+								{
+									"key": "paymentId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CHECKOUT CANCEL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/payments/checkout/cancel?paymentId=3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"payments",
+								"checkout",
+								"cancel"
+							],
+							"query": [
+								{
+									"key": "paymentId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "rooms",
+			"item": [
+				{
+					"name": "FIND ROOM BY ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/rooms/11",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"rooms",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE ROOM",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomNumber\": \"103\",\r\n        \"roomType\": \"Family Room\",\r\n        \"price\": 3500000.0,\r\n        \"unAvailableDates\": [\r\n            \"2025-04-02T14:00:00+07:00\",\r\n            \"2025-04-03T12:30:00+07:00\"\r\n        ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/rooms?hotelId=5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"rooms"
+							],
+							"query": [
+								{
+									"key": "hotelId",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE ROOMS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"roomNumber\": \"101\",\r\n        \"roomType\": \"Executive Suite\",\r\n        \"price\": 3000000.0,\r\n        \"unAvailableDates\": [\r\n            \"2025-04-01T14:00:00+07:00\"\r\n        ]\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/rooms/addRooms?hotelId=4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"rooms",
+								"addRooms"
+							],
+							"query": [
+								{
+									"key": "hotelId",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE ROOM",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomNumber\": \"102\",\r\n    \"roomType\": \"Deluxe\",\r\n    \"price\": 150.0,\r\n    \"isAvailable\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/rooms/12",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"rooms",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE ROOM",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/rooms/10",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"rooms",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SEARCH ROOM",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/rooms/search?hotelId=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"rooms",
+								"search"
+							],
+							"query": [
+								{
+									"key": "hotelId",
+									"value": "2"
+								},
+								{
+									"key": "roomNumber",
+									"value": "101",
+									"disabled": true
+								},
+								{
+									"key": "roomType",
+									"value": "Deluxe",
+									"disabled": true
+								},
+								{
+									"key": "minPrice",
+									"value": "1000000",
+									"disabled": true
+								},
+								{
+									"key": "maxPrice",
+									"value": "200",
+									"disabled": true
+								},
+								{
+									"key": "isAvailable",
+									"value": "false",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": "price",
+									"disabled": true
+								},
+								{
+									"key": "sortDirection",
+									"value": "desc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL ROOMS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/rooms",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"rooms"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "images",
+			"item": [
+				{
+					"name": "UPLOAD ROOM IMAGES",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/D:/workspace/intern/Booking-Hotel-Platform/client/public/assets/ImageHotels/pexels-photo-6434634.webp"
+								},
+								{
+									"key": "roomId",
+									"value": "6\n",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/api/images/upload",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"images",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL IMAGES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/images",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"images"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET IMAGES BY ROOM ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/images/imageByRoom?roomId=5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"images",
+								"imageByRoom"
+							],
+							"query": [
+								{
+									"key": "roomId",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPLOAD HOTEL IMAGE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotelId",
+									"value": "8",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/D:/workspace/intern/Booking-Hotel-Platform/client/public/assets/ImageHotels/pexels-photo-261327.webp"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/api/images/upload-hotel-image",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"images",
+								"upload-hotel-image"
+							],
+							"query": [
+								{
+									"key": "hotelId",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "amenities",
+			"item": [
+				{
+					"name": "CREATE AMENITY",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"amenityName\": \"WiFi\",\r\n        \"amenityDescription\": \"Free high-speed wireless internet access\"\r\n        \r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/amenities?hotelId=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"amenities"
+							],
+							"query": [
+								{
+									"key": "hotelId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE AMENITIES",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"amenityName\": \"WiFi\",\r\n        \"amenityDescription\": \"Free high-speed wireless internet access\"\r\n        \r\n    },\r\n    {\r\n        \"amenityName\": \"Bể bơi\",\r\n        \"amenityDescription\": \"Bể bơi ngoài trời với khu vực thư giãn\"\r\n        \r\n    },\r\n    {\r\n        \"amenityName\": \"Gym\",\r\n        \"amenityDescription\": \"Phòng tập thể dục hiện đại\"\r\n       \r\n    }\r\n]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/amenities/createAmenities?hotelId=8",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"amenities",
+								"createAmenities"
+							],
+							"query": [
+								{
+									"key": "hotelId",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET AMENITY BY HOTEL ID",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/payments/checkout?bookingId=20",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"payments",
+								"checkout"
+							],
+							"query": [
+								{
+									"key": "bookingId",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE AMENITY",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "localhost:8080"
+		}
+	]
+}
