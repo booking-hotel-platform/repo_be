@@ -3,7 +3,7 @@
 ## Giới thiệu
 API này cung cấp các chức năng quản lý đặt phòng khách sạn, bao gồm CRUD (Tạo, Đọc, Cập nhật, Xóa) cho các đặt phòng, khách sạn, người dùng, đánh giá và thanh toán.
 
-## Link Deploy
+## Link Deploy Of Web
 https://jame-booking.netlify.app/
 
 ## URL và Chức Năng
